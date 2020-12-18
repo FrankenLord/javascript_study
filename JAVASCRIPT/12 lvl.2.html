@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    //* гонки
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+    var Car = function (x, y ,speed)
+    {
+     this.x = x;
+     this.y = y;
+     this.draw();
+     this.speed=5
+    };
+     Car.prototype.draw = function ()
+     {
+      var carHtml = '<img src="http://nostarch.com/images/car.png">';
+      this.carElement = $(carHtml);
+      this.carElement.css
+      ({
+       position: "absolute",
+       left: this.x,
+       top: this.y
+      });
+      $("body").append(this.carElement);
+    };
+    Car.prototype.moveRight = function (am)
+    {if(typeof am==='number'){
+      this.x+=am
+    }
+    else
+    {
+     this.x += this.speed;
+    }
+     this.carElement.css
+     ({
+     left: this.x,
+     top: this.y
+     });
+    };
+    Car.prototype.moveLeft = function()
+    {
+      this.x -= this.speed;
+      this.carElement.class ({
+        left:this.x,
+        top:this.y
+      })
+    };
+    Car.prototype.moveUp = function()
+    {
+      this.y -= this.speed;
+      this.carElement.class ({
+        left:this.x,
+        top:this.y
+      })
+    };
+    Car.prototype.moveDown = function()
+    {
+      this.y += this.speed;
+      this.carElement.class ({
+        left:this.x,
+        top:this.y
+      })
+    }
+    var tesla = new Car(20, 20);
+    var nissan = new Car(100, 200);
+     var run1=function () {
+       tesla.moveRight(Math.floor(Math.random()*5));
+     }
+     var run2=function () {
+       nissan.moveRight(Math.floor(Math.random()*5));
+     }
+    setInterval(run1,30)
+    setInterval(run2,30)
+
+    </script>
+  </body>
+</html>

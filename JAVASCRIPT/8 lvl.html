@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    body
+    {
+      background-color: #f99
+    }
+    #bar {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      width: 100px;
+    }
+    #bar a {
+      backround-color: #949494;
+      color: #fff;
+      padding: 5px;
+      text-decoration: none;
+      fonr-weight: bold;
+      border-left: 5px solid #33ADFF;
+      display: block;
+    }
+    #bar li {
+      border-left: 10px solid #666;
+      border-bottom: 1px solid #666;
+    }
+    #bar a:hover {
+      backround-color: #666;
+      border-left: 5px solid #3333ff;
+    }
+    </style>
+    <title> My second page </title>
+  </head>
+  <body>
+    <h1> Welcomin </h1>
+    <script>
+    var words=[
+      'программа',
+      "интернет",
+      "гуглить",
+      "информирование",
+      "кодирование",
+      "студент",
+      "девушка",
+      "глупость"
+    ];
+    var word=words[Math.floor(Math.random()*words.length)];
+    var answerArray=[];
+    var error=6;
+    var errors=0;
+    for (var i=0;i<word.length;i++)
+    {
+      answerArray[i]="_";
+    }
+    var remainingLetters=word.length;
+    while (remainingLetters>0&&errors<error)
+    {
+      alert(answerArray.join(' '));
+      var quess=prompt('Угадайте букавку! А если вам нафиг не сдалась это очень крутая и интересная игра, то идете в жопу путем нажатия "ОТМЕНА".');
+      if (quess===null){
+        break;
+      } else if (quess.length!==1){
+        alert("ЖУЛИК! Я конечно не сказал, что можно ввести только одно значение, но и ты даун сам не догадался. Короче введи 1 ответ.");
+
+      } else
+      {
+        for (var j = 0; j < word.length; j++)
+        {
+          if (word[j]===quess.toLowerCase())
+          {
+            answerArray[j]=quess.toLowerCase();
+            remainingLetters--;
+          }
+
+        }
+        if(word[j]!==quess.toLowerCase()){
+          errors++;
+        }
+       }
+    }
+    if(remainingLetters===0){
+    alert(answerArray.join(''));
+    alert("Отлично! Ты справился с этим квестом... или нет. А ответом было - "+word);
+    }
+    else if(errors===error){
+          alert(answerArray.join(''));
+      alert("LOOSER. Не угадал слово - "+word)
+    }
+    </script>
+
+    <ul id="bar">
+      <li> <a href="#"> Main menu </a></li>
+      <li> <a href="#"> Galery </a></li>
+      <li> <a href="#"> sommeting </a></li>
+      <li> <a href="#"> Contact </a></li>
+    </ul>
+  </body>
+</html>

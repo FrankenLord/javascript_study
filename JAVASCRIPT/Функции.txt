@@ -1,0 +1,7 @@
+function add (number,number2) {
+     return number + number2;
+    };
+    function multiply (number3,number4) {
+         return number3 * number4;
+        };
+        console.log(multiply(36325,add(9824,777)));

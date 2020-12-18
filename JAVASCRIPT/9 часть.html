@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1 id="main-heading">Привет всем!</h1>
+<h2>Tut svoya tusa</h2>
+<h3>A tuuut</h3>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+  //* #1
+var frends=['Ermak','Li','Note'];
+for (i=0;i<frends.length;i++)
+{
+  $('body').append("<p>"+frends[i]+"</p>");
+}
+  $('h1').text('My little frends');
+  $('p').hide(0).fadeIn(2000);
+  $('p').append(' The best');
+  //* #2
+for(i=0;i<5;i++){
+  $('h1').fadeOut(i*500+500).fadeIn(i*500+500);
+}
+//* #3
+$('h2').delay(5000).fadeOut(300).fadeIn(300)
+//* #4
+$("h3").fadeTo(1000, 0);
+    </script>
+  </body>
+</html>

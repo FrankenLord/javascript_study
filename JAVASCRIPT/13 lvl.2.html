@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <canvas id="canvas" width="600" height="600"></canvas>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script>
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      //#1 snowmans
+        //var circleStroke = function (x, y, radius,strokefill)
+        //{
+         //ctx.beginPath();
+         //ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+         //if (strokefill)
+         //{
+           //ctx.fill();
+         //}
+         //else
+         //{
+           //ctx.stroke();
+         //}
+        //};
+        //var drawSnowman = function (x, y)
+        //{
+          //ctx.fillStyle = "Black";
+          //ctx.lineWidth = 4;
+          //circleStroke(x+50,y+50,30,false)
+          //circleStroke(x+50,y+130,50,false)
+          //circleStroke(x+60,y+40,4,true)
+          //circleStroke(x+40,y+40,4,true)
+          //circleStroke(x+50,y+130,4,true)
+          //circleStroke(x+50,y+110,4,true)
+          //circleStroke(x+50,y+150,4,true)
+          //ctx.fillStyle='Orange';
+          //circleStroke(x+50,y+50,4,true)
+        //}
+
+      //#2 рисует ломанные
+     //let drawPoints=function(p){
+       //ctx.beginPath();
+       //ctx.moveTo(p[0][0],p[0][1])
+       //for (var i = 1; i < p.length; i++) {
+         //ctx.lineTo(p[i][0],p[i][1])
+       //}
+       //ctx.stroke()
+       //}
+       //var mysteryPoints = [[50, 50], [50, 100], [25, 120], [100, 50],[70, 90], [100, 90], [70, 120]];
+       //drawPoints(mysteryPoints);
+       //drawPoints(points);
+
+      //#3 с мышью делает след
+       //$('#canvas').mousemove(function(event)
+       //{
+        // ctx.beginPath();
+        // ctx.lineWidth = 4;
+         //ctx.arc(event.pageX,event.pageY,3,0,Math.PI * 2, false);
+        // ctx.stroke();
+      // })
+
+      //#4 виселица 2.0
+      var words=[
+        'программа',
+        "интернет",
+        "гуглить",
+        "информирование",
+        "кодирование",
+        "студент",
+        "девушка",
+        "глупость"
+      ];
+      var word=words[Math.floor(Math.random()*words.length)];
+      var answerArray=[];
+      var error=6;
+      var errors=0;
+      for (var i=0;i<word.length;i++)
+      {
+        answerArray[i]="_";
+      }
+      var remainingLetters=word.length;
+      while (remainingLetters>0&&errors<error)
+      {
+        alert(answerArray.join(' '));
+        var quess=prompt('Угадайте букавку! А если вам нафиг не сдалась это очень крутая и интересная игра, то идете в жопу путем нажатия "ОТМЕНА".');
+        if (quess===null){
+          break;
+        } else if (quess.length!==1){
+          alert("ЖУЛИК! Я конечно не сказал, что можно ввести только одно значение, но и ты даун сам не догадался. Короче введи 1 ответ.");
+
+        } else
+        {
+          for (var j = 0; j < word.length; j++)
+          {
+            if (word[j]===quess.toLowerCase())
+            {
+              answerArray[j]=quess.toLowerCase();
+              remainingLetters--;
+            }
+
+          }
+          if(word[j]!==quess.toLowerCase()){
+            errors++;
+            if(errors===1){
+                ctx.strokeRect(230,30,20,20);
+            }
+            else if(errors===2){
+              ctx.beginPath();
+              ctx.moveTo(220,60);
+              ctx.lineTo(240,70);
+              ctx.stroke();
+            }
+            else if(errors===3){
+              ctx.moveTo(260,60);
+              ctx.lineTo(240,70);
+              ctx.stroke();
+            }
+            else if(errors===4){
+              ctx.moveTo(240,50);
+              ctx.lineTo(240,100);
+              ctx.stroke();
+            }
+            else if(errors===5){
+              ctx.moveTo(240,100);
+              ctx.lineTo(260,130);
+              ctx.stroke();
+            }
+            else if(errors===6){
+              ctx.moveTo(240,100);
+              ctx.lineTo(220,130);
+              ctx.stroke();
+            }
+          }
+         }
+      }
+      if(remainingLetters===0){
+      alert(answerArray.join(''));
+      alert("Отлично! Ты справился с этим квестом... или нет. А ответом было - "+word);
+      }
+      else if(errors===error){
+        alert("LOOSER")
+      }
+      </script>
+  </body>
+</html>

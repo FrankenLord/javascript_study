@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>FIND TREASURE!</title>
+
+  </head>
+  <body>
+    <h1 align="center">FIND TREASURE</h1>
+        <p id="check"></p>
+    <img id="map" src="https://i.pinimg.com/originals/97/fa/ea/97faeaa5043508267d1c8f3e0e758226.jpg" align="center" width=600 height=500>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+    var clicks=0;
+     var getRadnomNumber=function(size)
+     {
+       return Math.floor(Math.random()*size);
+     }
+     var width=600;
+     var height=500;
+     var target={
+       x: getRadnomNumber(width),
+       y: getRadnomNumber(height)
+     }
+     var getDistanse=function(event,target)
+     {
+       var difX=event.offsetX-target.x;
+       var difY=event.offsetY-target.y;
+       return Math.sqrt((difX*difX)+(difY+difY));
+     }
+     var getDistanseHint=function (distanse)
+     {
+       if (distanse<20)
+       {
+         return "hell yea!"
+       }
+       else if (distanse<40)
+       {
+         return "VERY HOT!"
+       }
+       else if (distanse<80)
+       {
+         return "hot"
+       }
+       else if (distanse<160)
+       {
+         return "nice "
+       }
+       else if (distanse<320)
+       {
+         return "cold"
+       }
+       else if (distanse<640)
+       {
+         return "Veryy c-c-cold..."
+       }
+       else
+       {
+         return"YOU FROSTY!"
+       }
+     }
+     $("#map").click(function(event)
+    {
+      clicks++;
+      var lifes=10-clicks;
+      alert ("По аккуратне дружище ведь у тебя осталось "+lifes+" попыток")
+      var distanse=getDistanse(event,target);
+      var distanseHint=getDistanseHint(distanse);
+      $("#check").text(distanseHint);
+      if(distanse<14)
+      {
+        alert("Ты нашел клад! Всего то за "+clicks+" попытки")
+      }
+      if(clicks>=10){
+        alert ("GAME OVER")
+      }
+    });
+    </script>
+  </body>
+</html>

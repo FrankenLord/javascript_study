@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <script>
+      var canvas=document.getElementById('canvas');
+      var ctx=canvas.getContext('2d');
+
+      //тело
+      ctx.fillRect(50,10,50,50);
+      ctx.fillRect(70,60,10,30);
+      ctx.fillRect(10,80,130,10);
+      ctx.fillRect(40,80,70,70);
+      ctx.fillRect(40,150,10,50);
+      ctx.fillRect(100,150,10,50);
+
+      //глаза
+      ctx.fillStyle='Red';
+      ctx.fillRect(60,20,10,10)
+      ctx.fillRect(80,20,10,10)
+
+      //окошко
+      ctx.strokeStyle='SkyBlue';
+      ctx.lineWidth=4;
+      ctx.strokeRect(0,0,150,210)
+
+      //другой человек
+      ctx.strokeStyle='green';
+      ctx.strokeRect(230,30,20,20);
+      ctx.beginPath();
+      ctx.moveTo(220,60);
+      ctx.lineTo(240,70);
+
+      ctx.moveTo(260,60);
+      ctx.lineTo(240,70);
+
+      ctx.moveTo(240,50);
+      ctx.lineTo(240,100);
+
+      ctx.moveTo(240,100);
+      ctx.lineTo(260,130);
+
+      ctx.moveTo(240,100);
+      ctx.lineTo(220,130);
+      ctx.stroke();
+
+      //круги
+      var circle = function (x, y, radius) {
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+      ctx.stroke();
+      };
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = "Red";
+      circle(400, 100, 10);
+      ctx.strokeStyle = "Orange";
+      circle(400, 100, 20);
+      ctx.strokeStyle = "Yellow";
+      circle(400, 100, 30);
+      ctx.strokeStyle = "Green";
+      circle(400, 100, 40);
+      ctx.strokeStyle = "Blue";
+      circle(400, 100, 50);
+      ctx.strokeStyle = "Purple";
+      circle(400, 100, 60);
+    </script>
+  </body>
+</html>
